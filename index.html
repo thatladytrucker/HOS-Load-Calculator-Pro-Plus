@@ -901,7 +901,13 @@
       stop2Active = true;
       etaSt2Status = statusClass(ETA_ST2, stop2Appt);
     }
+// LOAD STATUS FEATURE
+let loadStatus = "LEGAL";
 
+// Basic example rule
+if (totalDriveTime > 11) {
+  loadStatus = "NOT LEGAL";
+}
     const payload = {
       etaSh,
       ptaSh: PTA_SH,
