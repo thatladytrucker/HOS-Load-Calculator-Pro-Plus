@@ -1,6 +1,6 @@
 <!--
-  © 2026 ArtsnCrabs / Toya Cramsey
-  HOS Load Calculator PRO PLUS (PWA Version)
+  © 2025 ArtsnCrabs / Toya Cramsey
+  HOS Load Calculator PRO (PWA Version)
   All rights reserved.
 
   This software and its associated assets (HTML, CSS, JavaScript, design,
@@ -10,10 +10,9 @@
   permission from the owner.
 
   PRO VERSION:
-  - Same as Base and Pro version
-  - Adds Split Sleeper Option
-  - Adds Latest dispatch time
-  - Adds Load feasibility indicator
+  - Same as Base version
+  - Adds 70-Hr / 8-Day clock (ON DUTY + DRIVING)
+  - Adds optional STOP 02 (mid-stop) with miles split and ETA/PTA
 -->
 <!doctype html>
 <html lang="en">
@@ -404,10 +403,6 @@
           <div class="stat" id="etaCoStat">—</div>
         </div>
         <div class="small note" id="etaCoExplain"></div>
-        <div class="capsule">
-  <div>LOAD STATUS</div>
-  <div class="stat" id="loadStatus">—</div>
-</div>
       </div>
 
       <div class="row">
@@ -689,8 +684,6 @@
     etaCoStat.className = 'stat ' + (data.etaCo.cls||'');
     etaCoExplain.textContent = data.explainCo;
     $('#ptaCoVal').textContent = fmt(data.ptaCo);
-
-    $('#loadStatus').textContent = data.loadStatus;
   }
 
   function explainETA(
@@ -907,13 +900,7 @@
       stop2Active = true;
       etaSt2Status = statusClass(ETA_ST2, stop2Appt);
     }
-// LOAD STATUS FEATURE
-let loadStatus = "LEGAL";
 
-// Basic example rule
-if (totalDriveTime > 11) {
-  loadStatus = "NOT LEGAL";
-}
     const payload = {
       etaSh,
       ptaSh: PTA_SH,
@@ -922,7 +909,6 @@ if (totalDriveTime > 11) {
       ptaSt2: PTA_ST2,
       etaCo,
       ptaCo: PTA_CO,
-      loadStatus,
       explainSh: explainETA(ETA_SH, shipAppt),
       explainSt2: stop2Active
         ? explainETA(ETA_ST2, stop2Appt, 0, 0, dwell(stop2Stop), 0, 0)
