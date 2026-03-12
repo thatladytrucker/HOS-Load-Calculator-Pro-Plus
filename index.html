@@ -685,6 +685,8 @@
     etaCoStat.className = 'stat ' + (data.etaCo.cls||'');
     etaCoExplain.textContent = data.explainCo;
     $('#ptaCoVal').textContent = fmt(data.ptaCo);
+
+    $('#loadStatus').textContent = data.loadStatus;
   }
 
   function explainETA(
