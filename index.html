@@ -13,6 +13,7 @@
   - Same as Base version
   - Adds 70-Hr / 8-Day clock (ON DUTY + DRIVING)
   - Adds optional STOP 02 (mid-stop) with miles split and ETA/PTA
+  - Adds optional fuel stop
 -->
 <!doctype html>
 <html lang="en">
@@ -418,6 +419,7 @@
         • Auto 30-min rest break is included when total driving ≥ 8h.<br>
         • Long loads use 450 miles / 9-hr safety limit per day (11-hr legal ceiling) with 10-hr resets.<br>
         • Status colors compare ETA against the appointment (on-time ≤60m early = green; >60m early = yellow; ≥1m late = red).
+        • Sleeper Berth behaves as Off Duty in the PRO version. Split-sleeper calculations are available in PRO+.
       </div>
       <div class="note" style="margin-top:10px">
         © 2025 Toya Cramsey (ArtsnCrabs). All rights reserved. For guidance only — driver remains responsible for HOS compliance.
@@ -472,10 +474,12 @@
     <div class="hos-controls">
       <div class="hos-status-buttons">
         <span>Duty Status:</span>
-        <button data-status="ON_DUTY" class="hos-status-btn">On Duty (Not Driving)</button>
-        <button data-status="DRIVING" class="hos-status-btn">Driving</button>
-        <button data-status="BREAK" class="hos-status-btn">Break / Off Duty</button>
-        <button data-status="OFF" class="hos-status-btn">Off (End Day)</button>
+<button data-status="ON_DUTY" class="hos-status-btn">On Duty</button>
+<button data-status="DRIVING" class="hos-status-btn">Driving</button>
+<button data-status="BREAK" class="hos-status-btn">Break (30 min)</button>
+<button data-status="OFF_DUTY" class="hos-status-btn">Off Duty</button>
+<button data-status="SLEEPER" class="hos-status-btn">Sleeper Berth</button>
+<button data-status="OFF" class="hos-status-btn">Off (End Day)</button>
       </div>
 
       <button id="btn-reset-hos" class="hos-reset">
@@ -1106,16 +1110,33 @@
     const delta = secondsBetween(last, current);
     if (delta <= 0) return;
 
-    if (state.dutyStatus === "DRIVING") {
-      state.driveSecondsUsed        += delta;
-      state.driveSinceBreakSeconds  += delta;
-      state.onDutySecondsUsed       += delta;
-    }
-    else if (state.dutyStatus === "ON_DUTY") {
-      state.onDutySecondsUsed       += delta;
-    }
-    else if (state.dutyStatus === "BREAK") {
-      state.breakSecondsCurrentStint += delta;
+   if (state.dutyStatus === "DRIVING") {
+  state.driveSecondsUsed       += delta;
+  state.driveSinceBreakSeconds += delta;
+  state.onDutySecondsUsed      += delta;
+}
+else if (state.dutyStatus === "ON_DUTY") {
+  state.onDutySecondsUsed      += delta;
+}
+else if (state.dutyStatus === "BREAK") {
+  state.breakSecondsCurrentStint += delta;
+}
+if (state.dutyStatus === "DRIVING") {
+  state.driveSecondsUsed       += delta;
+  state.driveSinceBreakSeconds += delta;
+  state.onDutySecondsUsed      += delta;
+}
+else if (state.dutyStatus === "ON_DUTY") {
+  state.onDutySecondsUsed      += delta;
+}
+else if (state.dutyStatus === "BREAK") {
+  state.breakSecondsCurrentStint += delta;
+}
+else if (state.dutyStatus === "OFF_DUTY") {
+  // off duty rest, clocks continue running but no work time added
+}
+else if (state.dutyStatus === "SLEEPER") {
+  // sleeper berth rest, same as off duty for now
     }
 
     state.lastStatusChange = current.toISOString();
