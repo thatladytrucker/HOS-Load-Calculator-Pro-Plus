@@ -813,6 +813,13 @@ const splitAnalysis = {
   offEnd: '—',
   updatedEta: '—'
 };
+    // Basic split sleeper trigger rule
+if (totalMiles <= 450) {
+  splitAnalysis.feasible = 'NO BENEFIT';
+}
+else {
+  splitAnalysis.feasible = 'NOT FEASIBLE';
+}
     if(!tripStart || v<=0){
       showResults(null);
       alert('Enter at least: Trip Start, MPH, and miles.');
