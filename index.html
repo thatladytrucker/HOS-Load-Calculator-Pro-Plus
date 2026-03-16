@@ -722,6 +722,11 @@
     etaCoStat.className = 'stat ' + (data.etaCo.cls||'');
     etaCoExplain.textContent = data.explainCo;
     $('#ptaCoVal').textContent = fmt(data.ptaCo);
+    $('#splitFeasible').textContent = 'NOT RUN';
+$('#splitType').textContent = '—';
+$('#splitOffStart').textContent = '—';
+$('#splitOffEnd').textContent = '—';
+$('#splitEtaFinal').textContent = '—';
   }
 
   function explainETA(
