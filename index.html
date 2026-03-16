@@ -970,7 +970,12 @@ const splitAnalysis = {
         finalDwell,
         extraRestMs,
         fuelForFinalMs
-      )
+      ),
+      splitFeasible: splitAnalysis.feasible,
+      splitType: splitAnalysis.splitType,
+      splitOffStart: splitAnalysis.offStart,
+      splitOffEnd: splitAnalysis.offEnd,
+      splitEtaFinal: splitAnalysis.updatedEta,
     };
 
     showResults(payload);
