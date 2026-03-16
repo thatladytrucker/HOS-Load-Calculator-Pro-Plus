@@ -829,7 +829,16 @@ else {
       alert('Enter at least: Trip Start, MPH, and miles.');
       return;
     }
+    // Trip start sanity checks
+if (shipAppt && shipAppt < tripStart) {
+  alert("ERROR: Shipper appointment cannot be before Trip Start.");
+  return;
+}
 
+if (consAppt && consAppt < tripStart) {
+  alert("ERROR: Final (90) appointment cannot be before Trip Start.");
+  return;
+}
     // basic appointment sanity checks
     if (shipAppt && consAppt && consAppt < shipAppt) {
       alert("ERROR: Final (90) appointment cannot be before SHIPPER appointment.");
