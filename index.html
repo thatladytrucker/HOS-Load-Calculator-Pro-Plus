@@ -1022,7 +1022,14 @@ if (consAppt && consAppt < tripStart) {
     // It could be added into PTA if we ever want PTA "free after fuel", but left out for now.
     const afterConsBufferMs = 0;
     const fuelForFinalMs = fuelAfterShipperMs; // fuel that actually affects on-road ETA
-
+    const splitAnalysis = analyzeSplitSleeper({
+  totalMiles,
+  tripStart,
+  ptaSh: PTA_SH,
+  etaCo: ETA_CO,
+  consAppt,
+  extraRestMs
+});
     // --- STATUS + EXPLANATION ---
 
     const etaSh = statusClass(ETA_SH, shipAppt);
