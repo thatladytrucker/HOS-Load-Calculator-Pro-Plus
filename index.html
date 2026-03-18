@@ -679,7 +679,85 @@
     const d = new Date(s);
     return isNaN(d) ? null : d;
   }
+    const d = parseFloat($('#deadhead').value||0);
+    const l = parseFloat($('#loaded').value||0);
+    $('#total').value = isFinite(d+l) ? (d+l) : '';
+  }
+  $('#deadhead').addEventListener('input', recalcTotal);
+  $('#loaded').addEventListener('input', recalcTotal);
 
+  
+  function valDate(s){
+  if(!s) return null;
+  const d = new Date(s);
+  return isNaN(d) ? null : d;
+}
+
+function analyzeSplitSleeper({
+  totalMiles,
+  tripStart,
+  ptaSh,
+  etaCo,
+  consAppt,
+  extraRestMs
+}){
+  const result = {
+    feasible: 'NOT RUN',
+    splitType: '—',
+    offStart: '—',
+    offEnd: '—',
+    updatedEta: '—'
+  };
+
+  if (!tripStart || !ptaSh || !etaCo) {
+    return result;
+  }
+
+  if (totalMiles <= 450) {
+    result.feasible = 'NO BENEFIT';
+    return result;
+  }
+
+  let splitType = '7/3';
+  let offDutyHours = 7;
+
+  if (totalMiles >= 600) {
+    splitType = '8/2';
+    offDutyHours = 8;
+  }
+
+  result.splitType = splitType;
+
+  const offStartDate = new Date(ptaSh.getTime() + (2 * 60 * 60 * 1000));
+  const offEndDate = new Date(offStartDate.getTime() + (offDutyHours * 60 * 60 * 1000));
+
+  result.offStart = fmt(offStartDate);
+  result.offEnd = fmt(offEndDate);
+
+  let updatedEtaDate = new Date(etaCo.getTime());
+
+  if (extraRestMs > 0) {
+    updatedEtaDate = new Date(etaCo.getTime() - extraRestMs);
+    result.feasible = 'IMPROVES ETA';
+  } else {
+    result.feasible = 'NOT FEASIBLE';
+  }
+
+  result.updatedEta = fmt(updatedEtaDate);
+
+  return result;
+}
+
+  // STOP 02 visibility toggle
+  const stop2EnabledEl = $('#stop2Enabled');
+  const stop2Fields = $('#stop2Fields');
+  const stop2Results = $('#stop2Results');
+  function updateStop2Visibility(){
+    if(!stop2Fields || !stop2EnabledEl) return;
+    stop2Fields.style.display = stop2EnabledEl.checked ? 'grid' : 'none';
+  }
+  if(stop2EnabledEl){
+    stop2EnabledEl.addEventListener('change', updateStop2Visibility);
   // STOP 02 visibility toggle
   const stop2EnabledEl = $('#stop2Enabled');
   const stop2Fields = $('#stop2Fields');
