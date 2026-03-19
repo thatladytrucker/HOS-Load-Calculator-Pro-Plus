@@ -747,16 +747,7 @@ if(stop2EnabledEl){
   stop2EnabledEl.addEventListener('change', updateStop2Visibility);
   updateStop2Visibility();
 }
-  const stop2Fields = $('#stop2Fields');
-  const stop2Results = $('#stop2Results');
-  function updateStop2Visibility(){
-    if(!stop2Fields || !stop2EnabledEl) return;
-    stop2Fields.style.display = stop2EnabledEl.checked ? 'grid' : 'none';
-  }
-  if(stop2EnabledEl){
-    stop2EnabledEl.addEventListener('change', updateStop2Visibility);
-    updateStop2Visibility();
-  }
+  
 
   function showResults(data){
     const wrap = $('#results');
