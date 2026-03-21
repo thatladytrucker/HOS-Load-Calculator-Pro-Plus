@@ -673,7 +673,7 @@ function recalcTotal(){
 }
 $('#deadhead').addEventListener('input', recalcTotal);
 $('#loaded').addEventListener('input', recalcTotal);
-
+recalcTotal();
 function valDate(s){
   if(!s) return null;
   const d = new Date(s);
