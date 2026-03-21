@@ -681,7 +681,60 @@ function valDate(s){
   return isNaN(d) ? null : d;
 }
 
+function analyzeSplitSleeper({
+  totalMiles,
+  tripStart,
+  ptaSh,
+  etaCo,
+  consAppt,
+  extraRestMs
+}){
+  const result = {
+    feasible: 'NOT RUN',
+    splitType: '—',
+    offStart: '—',
+    offEnd: '—',
+    updatedEta: '—'
+  };
 
+  if (!tripStart || !ptaSh || !etaCo) {
+    return result;
+  }
+
+  if (totalMiles <= 450) {
+    result.feasible = 'NO BENEFIT';
+    return result;
+  }
+
+  let splitType = '7/3';
+  let offDutyHours = 7;
+
+  if (totalMiles >= 600) {
+    splitType = '8/2';
+    offDutyHours = 8;
+  }
+
+  result.splitType = splitType;
+
+  const offStartDate = new Date(ptaSh.getTime() + (2 * 60 * 60 * 1000));
+  const offEndDate = new Date(offStartDate.getTime() + (offDutyHours * 60 * 60 * 1000));
+
+  result.offStart = fmt(offStartDate);
+  result.offEnd = fmt(offEndDate);
+
+  let updatedEtaDate = new Date(etaCo.getTime());
+
+  if (extraRestMs > 0) {
+    updatedEtaDate = new Date(etaCo.getTime() - extraRestMs);
+    result.feasible = 'IMPROVES ETA';
+  } else {
+    result.feasible = 'NOT FEASIBLE';
+  }
+
+  result.updatedEta = fmt(updatedEtaDate);
+
+  return result;
+}
 
 // STOP 02 visibility toggle
 const stop2EnabledEl = $('#stop2Enabled');
