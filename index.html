@@ -839,6 +839,47 @@ function analyzeRecap(){
     tomorrowGain
   };
 }
+function analyzeLatestDispatch({
+  tripStart,
+  shipAppt,
+  consAppt,
+  driveToShipperHrs,
+  fuelBeforeMs,
+  ptaSh,
+  fuelAfterShipperMs,
+  loadedMiles,
+  mph,
+  breakMs,
+  extraRestMs
+}){
+  const result = {
+    latestShipper: '—',
+    latestFinal: '—'
+  };
+
+  if (tripStart && shipAppt && isFinite(driveToShipperHrs)) {
+    const latestShipperDate = new Date(
+      shipAppt.getTime()
+      - fuelBeforeMs
+      - hours(driveToShipperHrs)
+    );
+    result.latestShipper = fmt(latestShipperDate);
+  }
+
+  if (consAppt && ptaSh && isFinite(loadedMiles) && isFinite(mph) && mph > 0) {
+    const driveToFinalHrs = loadedMiles / mph;
+    const latestFinalDate = new Date(
+      consAppt.getTime()
+      - fuelAfterShipperMs
+      - hours(driveToFinalHrs)
+      - breakMs
+      - extraRestMs
+    );
+    result.latestFinal = fmt(latestFinalDate);
+  }
+
+  return result;
+}  
 // STOP 02 visibility toggle
 const stop2EnabledEl = $('#stop2Enabled');
 const stop2Fields = $('#stop2Fields');
