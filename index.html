@@ -1156,6 +1156,19 @@ if (consAppt && consAppt < tripStart) {
   extraRestMs
 });
     const recapAnalysis = analyzeRecap();
+    const latestDispatchAnalysis = analyzeLatestDispatch({
+  tripStart,
+  shipAppt,
+  consAppt,
+  driveToShipperHrs,
+  fuelBeforeMs,
+  ptaSh: PTA_SH,
+  fuelAfterShipperMs,
+  loadedMiles: loadedMilesSafe,
+  mph: v,
+  breakMs,
+  extraRestMs
+});
     
     // --- STATUS + EXPLANATION ---
 
