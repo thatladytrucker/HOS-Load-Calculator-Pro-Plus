@@ -1209,8 +1209,10 @@ if (consAppt && consAppt < tripStart) {
       splitOffEnd: splitAnalysis.offEnd,
       splitEtaFinal: splitAnalysis.updatedEta,
       recapUsed: recapAnalysis.used,
-recapAvailable: recapAnalysis.available,
-recapTomorrow: recapAnalysis.tomorrowGain,
+      recapAvailable: recapAnalysis.available,
+      recapTomorrow: recapAnalysis.tomorrowGain,
+      latestDispatchShipper: latestDispatchAnalysis.latestShipper,
+      latestDispatchFinal: latestDispatchAnalysis.latestFinal,
     };
 
     showResults(payload);
