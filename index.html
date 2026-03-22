@@ -1288,6 +1288,9 @@ if (consAppt && consAppt < tripStart) {
       recapTomorrow: recapAnalysis.tomorrowGain,
       latestDispatchShipper: latestDispatchAnalysis.latestShipper,
       latestDispatchFinal: latestDispatchAnalysis.latestFinal,
+      shipperFeasibility: appointmentFeasibility.shipperFeasibility,
+      finalFeasibility: appointmentFeasibility.finalFeasibility,
+      loadRunStatus: appointmentFeasibility.loadRunStatus,   
     };
 
     showResults(payload);
