@@ -934,6 +934,8 @@ if(stop2EnabledEl){
     $('#recapUsed').textContent = (data.recapUsed ?? '—');
     $('#recapAvailable').textContent = (data.recapAvailable ?? '—');
     $('#recapTomorrow').textContent = (data.recapTomorrow ?? '—');
+    $('#latestDispatchShipper').textContent = data.latestDispatchShipper || '—';
+    $('#latestDispatchFinal').textContent = data.latestDispatchFinal || '—';
    }
 
   function explainETA(
