@@ -875,6 +875,9 @@ if(stop2EnabledEl){
     $('#splitOffStart').textContent = data.splitOffStart || '—';
     $('#splitOffEnd').textContent = data.splitOffEnd || '—';
     $('#splitEtaFinal').textContent = data.splitEtaFinal || '—';
+    $('#recapUsed').textContent = (data.recapUsed ?? '—');
+    $('#recapAvailable').textContent = (data.recapAvailable ?? '—');
+    $('#recapTomorrow').textContent = (data.recapTomorrow ?? '—');
    }
 
   function explainETA(
