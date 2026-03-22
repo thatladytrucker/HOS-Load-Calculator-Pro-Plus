@@ -901,7 +901,52 @@ function analyzeLatestDispatch({
   }
 
   return result;
-}  
+} 
+  function analyzeAppointmentFeasibility({
+  etaSh,
+  shipAppt,
+  etaCo,
+  consAppt
+}){
+  const result = {
+    shipperFeasibility: 'NO APPT',
+    finalFeasibility: 'NO APPT',
+    loadRunStatus: 'CHECK APPTS'
+  };
+
+  if (shipAppt && etaSh) {
+    result.shipperFeasibility = etaSh <= shipAppt ? 'MAKE SHIPPER' : 'MISS SHIPPER';
+  }
+
+  if (consAppt && etaCo) {
+    result.finalFeasibility = etaCo <= consAppt ? 'MAKE FINAL' : 'MISS FINAL';
+  }
+
+  if (
+    result.shipperFeasibility === 'MAKE SHIPPER' &&
+    result.finalFeasibility === 'MAKE FINAL'
+  ) {
+    result.loadRunStatus = 'LOAD CAN RUN';
+  }
+  else if (
+    result.shipperFeasibility === 'MISS SHIPPER' ||
+    result.finalFeasibility === 'MISS FINAL'
+  ) {
+    result.loadRunStatus = 'LOAD AT RISK';
+  }
+  else if (
+    result.shipperFeasibility === 'NO APPT' &&
+    result.finalFeasibility === 'NO APPT'
+  ) {
+    result.loadRunStatus = 'CHECK APPTS';
+  }
+  else {
+    result.loadRunStatus = 'PARTIAL CHECK';
+  }
+
+  return result;
+}
+  
 // STOP 02 visibility toggle
 const stop2EnabledEl = $('#stop2Enabled');
 const stop2Fields = $('#stop2Fields');
