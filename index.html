@@ -802,7 +802,28 @@ function analyzeSplitSleeper({
 
   return result;
 }
+function analyzeRecap(){
+  const days = [
+    parseFloat($('#recapDay1').value || 0),
+    parseFloat($('#recapDay2').value || 0),
+    parseFloat($('#recapDay3').value || 0),
+    parseFloat($('#recapDay4').value || 0),
+    parseFloat($('#recapDay5').value || 0),
+    parseFloat($('#recapDay6').value || 0),
+    parseFloat($('#recapDay7').value || 0),
+    parseFloat($('#recapDay8').value || 0)
+  ].map(v => isFinite(v) ? v : 0);
 
+  const used = days.reduce((sum, v) => sum + v, 0);
+  const available = Math.max(0, 70 - used);
+  const tomorrowGain = days[0];
+
+  return {
+    used,
+    available,
+    tomorrowGain
+  };
+}
 // STOP 02 visibility toggle
 const stop2EnabledEl = $('#stop2Enabled');
 const stop2Fields = $('#stop2Fields');
