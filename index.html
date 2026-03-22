@@ -995,7 +995,7 @@ if (consAppt && consAppt < tripStart) {
       );
       PTA_CO = new Date(ETA_CO.getTime() + finalDwell);
     }
-
+    const splitBasePta = (stop2Enabled && PTA_ST2) ? PTA_ST2 : PTA_SH;
     // We don't add fuelAfterConsigneeMs to ETA to final, since that's after the last stop.
     // It could be added into PTA if we ever want PTA "free after fuel", but left out for now.
     const afterConsBufferMs = 0;
@@ -1003,7 +1003,7 @@ if (consAppt && consAppt < tripStart) {
     const splitAnalysis = analyzeSplitSleeper({
   totalMiles,
   tripStart,
-  ptaSh: PTA_SH,
+  ptaSh: splitBasePta,,
   etaCo: ETA_CO,
   consAppt,
   extraRestMs
