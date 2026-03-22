@@ -1238,6 +1238,12 @@ if (consAppt && consAppt < tripStart) {
   breakMs,
   extraRestMs
 });
+    const appointmentFeasibility = analyzeAppointmentFeasibility({
+  etaSh: ETA_SH,
+  shipAppt,
+  etaCo: ETA_CO,
+  consAppt
+});
     
     // --- STATUS + EXPLANATION ---
 
