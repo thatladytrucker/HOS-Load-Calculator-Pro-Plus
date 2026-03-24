@@ -1313,7 +1313,11 @@ if (consAppt && consAppt < tripStart) {
   etaCo: ETA_CO,
   consAppt
 });
-    
+    const splitAwareFeasibility = analyzeSplitAwareFeasibility({
+  splitFeasible: splitAnalysis.feasible,
+  splitEtaFinal: splitAnalysis.updatedEta,
+  consAppt
+});
     // --- STATUS + EXPLANATION ---
 
     const etaSh = statusClass(ETA_SH, shipAppt);
