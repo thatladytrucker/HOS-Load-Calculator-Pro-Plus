@@ -1363,7 +1363,10 @@ if (consAppt && consAppt < tripStart) {
       latestDispatchFinal: latestDispatchAnalysis.latestFinal,
       shipperFeasibility: appointmentFeasibility.shipperFeasibility,
       finalFeasibility: appointmentFeasibility.finalFeasibility,
-      loadRunStatus: appointmentFeasibility.loadRunStatus,   
+      loadRunStatus: appointmentFeasibility.loadRunStatus,
+      splitFinalFeasibility: splitAwareFeasibility.splitFinalFeasibility,
+      splitLoadRunStatus: splitAwareFeasibility.splitLoadRunStatus,
+      splitSavesLoad: splitAwareFeasibility.splitSavesLoad,
     };
 
     showResults(payload);
