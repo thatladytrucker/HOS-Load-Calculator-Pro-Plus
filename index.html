@@ -558,30 +558,7 @@
           <div class="stat pill" id="loadRunStatus">—</div>
         </div>
       </div>
-      <!-- /APPOINTMENT FEASIBILITY RESULTS -->
-            <!-- SPLIT-AWARE APPOINTMENT FEASIBILITY RESULTS -->
-      <div class="row">
-        <div class="capsule">
-          <div>SPLIT-AWARE FINAL FEASIBILITY</div>
-          <div class="stat pill" id="splitFinalFeasibility">—</div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="capsule">
-          <div>SPLIT-AWARE LOAD STATUS</div>
-          <div class="stat pill" id="splitLoadRunStatus">—</div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="capsule">
-          <div>SPLIT ETA SAVES LOAD</div>
-          <div class="stat pill" id="splitSavesLoad">—</div>
-        </div>
-      </div>
-      <!-- /SPLIT-AWARE APPOINTMENT FEASIBILITY RESULTS -->
-      
+                        
       <div class="hr"></div>
       <div class="note">
         • Auto 30-min rest break is included when total driving ≥ 8h.<br>
@@ -972,47 +949,7 @@ function analyzeLatestDispatch({
 
   return result;
 }
-function analyzeSplitAwareFeasibility({
-  splitFeasible,
-  splitEtaFinal,
-  consAppt
-}){
-  const result = {
-    splitFinalFeasibility: 'NOT RUN',
-    splitLoadRunStatus: 'NOT RUN',
-    splitSavesLoad: 'NO'
-  };
 
-  if (!splitFeasible || splitFeasible === 'NOT RUN' || splitFeasible === 'NO BENEFIT') {
-    return result;
-  }
-
-  if (!splitEtaFinal || splitEtaFinal === '—' || !consAppt) {
-    result.splitFinalFeasibility = 'CHECK FINAL';
-    result.splitLoadRunStatus = 'CHECK SPLIT';
-    return result;
-  }
-
-  const splitEtaDate = new Date(splitEtaFinal);
-
-  if (isNaN(splitEtaDate)) {
-    result.splitFinalFeasibility = 'CHECK FINAL';
-    result.splitLoadRunStatus = 'CHECK SPLIT';
-    return result;
-  }
-
-  if (splitEtaDate <= consAppt) {
-    result.splitFinalFeasibility = 'MAKE FINAL';
-    result.splitLoadRunStatus = 'LOAD CAN RUN';
-    result.splitSavesLoad = 'YES';
-  } else {
-    result.splitFinalFeasibility = 'MISS FINAL';
-    result.splitLoadRunStatus = 'LOAD AT RISK';
-    result.splitSavesLoad = 'NO';
-  }
-
-  return result;
-}  
 // STOP 02 visibility toggle
 const stop2EnabledEl = $('#stop2Enabled');
 const stop2Fields = $('#stop2Fields');
@@ -1313,11 +1250,7 @@ if (consAppt && consAppt < tripStart) {
   etaCo: ETA_CO,
   consAppt
 });
-    const splitAwareFeasibility = analyzeSplitAwareFeasibility({
-  splitFeasible: splitAnalysis.feasible,
-  splitEtaFinal: splitAnalysis.updatedEta,
-  consAppt
-});
+
     // --- STATUS + EXPLANATION ---
 
     const etaSh = statusClass(ETA_SH, shipAppt);
@@ -1363,10 +1296,7 @@ if (consAppt && consAppt < tripStart) {
       latestDispatchFinal: latestDispatchAnalysis.latestFinal,
       shipperFeasibility: appointmentFeasibility.shipperFeasibility,
       finalFeasibility: appointmentFeasibility.finalFeasibility,
-      loadRunStatus: appointmentFeasibility.loadRunStatus,
-      splitFinalFeasibility: splitAwareFeasibility.splitFinalFeasibility,
-      splitLoadRunStatus: splitAwareFeasibility.splitLoadRunStatus,
-      splitSavesLoad: splitAwareFeasibility.splitSavesLoad,
+      loadRunStatus: appointmentFeasibility.loadRunStatus,      
     };
 
     showResults(payload);
