@@ -1,0 +1,27 @@
+{
+  "background_color": "#0e1628",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "HOS Load Calculator Pro Plus",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "HOS Pro+",
+  "start_url": "/",
+  "theme_color": "#0e1628",
+  "icons": [
+    {
+      "src": "https://hos-load-calculator-pro-plus.netlify.app/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://hos-load-calculator-pro-plus.netlify.app/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "description": "The ultimate HOS tool with advanced logistics planning, split-sleeper analysis, and full fleet compliance features.",
+  "id": "com.artsncrabs.hosproplus"
+}
