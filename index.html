@@ -1071,7 +1071,22 @@ if(stop2EnabledEl){
     const tripStart = valDate($('#tripStart').value);
     const dh = parseFloat($('#deadhead').value||0);
     const lm = parseFloat($('#loaded').value||0);
-    const v = Math.max(50, Math.min(75, parseFloat($('#mph').value||60)));
+    
+    // 1. Get the base speed from the slider
+    let v = Math.max(50, Math.min(75, parseFloat($('#mph').value||60)));
+    
+    // 2. Check the cargo weight dropdown
+    const weightBracket = parseFloat($('#cargoWeight').value || 0);
+
+    // 3. The "IF/THEN" Logic: Slow down based on weight
+    if (weightBracket >= 61000) {
+      v = v - 3; // Max Load: Slow down by 3 MPH
+    } else if (weightBracket >= 41000) {
+      v = v - 2; // Heavy: Slow down by 2 MPH
+    } else if (weightBracket >= 20000) {
+      v = v - 1; // Medium: Slow down by 1 MPH
+    }
+    
     const shipAppt = valDate($('#shipperAppt').value);
     const consAppt = valDate($('#consAppt').value);
     const shipStop = $('#shipperStop').value;
