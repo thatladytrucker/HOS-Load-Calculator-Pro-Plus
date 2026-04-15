@@ -229,12 +229,20 @@
             <button class="btn mutebtn" id="genId">Auto</button>
           </div>
         </div>
-        <div>
-          <div class="label">AVG (MPH) — 50 to 75</div>
-          <div class="inline">
-            <input id="mph" type="range" min="50" max="75" step="1" value="60" />
-            <span class="pill"><span id="mphVal">60</span> MPH</span>
-          </div>
+       <div>
+  <div class="label">AVG (MPH) — 50 to 75</div>
+  <input type="range" id="mph" min="50" max="75" value="60" step="1">
+  <div class="val-display"><span id="mphVal">60</span> MPH</div>
+</div>
+<div>
+  <div class="label">CARGO WEIGHT BRACKET</div>
+  <select id="cargoWeight" style="width:100%; padding:8px; border-radius:4px; border:1px solid #ccc; background:#fff; color:#000;">
+    <option value="0">Empty / Light (0 - 19,999 lbs)</option>
+    <option value="20000">Medium (20,000 - 40,000 lbs)</option>
+    <option value="41000">Heavy (41,000 - 60,000 lbs)</option>
+    <option value="61000">Max Load (61,000 - 80,000 lbs)</option>
+  </select>
+</div>
         </div>
       </div>
 
