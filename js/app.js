@@ -3,7 +3,10 @@
 
 (function(){
   "use strict";
-
+  
+// ================================
+// Utility Functions
+// ================================
   const $ = sel => document.querySelector(sel);
   const fmt = d => d ? new Intl.DateTimeFormat(undefined, {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(d) : '—';
   const hours = h => h * 3600 * 1000;
@@ -16,7 +19,10 @@
     'LIVE120': minutes(120),
     'BACKHAUL90': minutes(90)
   }[code] ?? 0);
-
+  
+// ================================
+// Stop Timing Logic
+// ================================
   function statusClass(eta, appt){
     if(!eta || !appt) return {label: fmt(eta), cls: ''};
     const diffMin = Math.round((appt - eta)/60000);
