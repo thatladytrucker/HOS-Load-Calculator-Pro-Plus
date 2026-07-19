@@ -1,4 +1,5 @@
-// HOS Load Calculator Master-v7
+// HOS Load Calculator PRO Plus
+// Master-v7.0.0
 // Main Application JavaScript
 
 (function(){
