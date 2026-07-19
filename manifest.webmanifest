@@ -23,5 +23,6 @@
     }
   ],
   "description": "The ultimate HOS tool with advanced logistics planning, split-sleeper analysis, and full fleet compliance features.",
+  "app_version": "Master-v7.0.0",
   "id": "com.artsncrabs.hosproplus"
 }
