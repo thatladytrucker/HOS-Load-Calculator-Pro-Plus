@@ -882,17 +882,6 @@ else if (state.dutyStatus === "ON_DUTY") {
 else if (state.dutyStatus === "BREAK") {
   state.breakSecondsCurrentStint += delta;
 }
-if (state.dutyStatus === "DRIVING") {
-  state.driveSecondsUsed       += delta;
-  state.driveSinceBreakSeconds += delta;
-  state.onDutySecondsUsed      += delta;
-}
-else if (state.dutyStatus === "ON_DUTY") {
-  state.onDutySecondsUsed      += delta;
-}
-else if (state.dutyStatus === "BREAK") {
-  state.breakSecondsCurrentStint += delta;
-}
 else if (state.dutyStatus === "OFF_DUTY") {
   // off duty rest, clocks continue running but no work time added
 }
@@ -1090,7 +1079,7 @@ else if (state.dutyStatus === "SLEEPER") {
       driveStatusEl.className = "hos-status hos-expired";
     } else if (totalDriveSeconds >= NINE_HOURS_DRIVE_SECONDS && driveRemaining > 0) {
       driveStatusEl.textContent =
-        "9/2 rule: ≥9h driving — start parking, shut down, then 10h off + 2h buffer.";
+        "Toya's 9/2 Safety Rule: ≥9h driving reached — begin planning parking and required rest.";
       driveStatusEl.className = "hos-status hos-warning";
     } else if (driveRemaining <= 3600) {
       driveStatusEl.textContent = "Warning – less than 1 hr drive left";
