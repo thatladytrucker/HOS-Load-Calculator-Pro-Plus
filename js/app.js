@@ -828,7 +828,11 @@ if (consAppt && consAppt < tripStart) {
 
   let state = loadState();
   let weeklyDays = loadWeekly();
-
+  
+// ================================
+// HOS Time Helpers
+// ================================
+  
   function now() {
     return new Date();
   }
@@ -855,6 +859,10 @@ if (consAppt && consAppt < tripStart) {
     );
   }
 
+// ================================
+// HOS Duty Time Tracking Logic
+// ================================
+  
   function applyStatusAccrual() {
     if (!state.lastStatusChange) return;
     const last = new Date(state.lastStatusChange);
@@ -933,7 +941,10 @@ else if (state.dutyStatus === "SLEEPER") {
     saveState();
     updateUI();
   }
-
+// ================================
+// HOS Controls & Clock Display
+// ================================
+  
   function startDay() {
     const current = now();
 
