@@ -94,7 +94,9 @@
       listEl.appendChild(div);
     });
   }
-
+// ================================
+// Trip Management & Input Controls
+// ================================
   function saveRecentTrip(meta){
     recentTrips.unshift(meta);
     if(recentTrips.length > 8) recentTrips.length = 8;
@@ -137,7 +139,9 @@ function valDate(s){
   const d = new Date(s);
   return isNaN(d) ? null : d;
 }
-
+// ================================
+// Advanced HOS Analysis Logic
+// ================================
 function analyzeSplitSleeper({
   totalMiles,
   tripStart,
@@ -299,7 +303,10 @@ function analyzeLatestDispatch({
 
   return result;
 }
-
+// ================================
+// UI Controls & Results Display
+// ================================
+  
 // STOP 02 visibility toggle
 const stop2EnabledEl = $('#stop2Enabled');
 const stop2Fields = $('#stop2Fields');
@@ -360,7 +367,10 @@ if(stop2EnabledEl){
     $('#finalFeasibility').textContent = data.finalFeasibility || '—';
     $('#loadRunStatus').textContent = data.loadRunStatus || '—';
    }
-
+// ================================
+// Trip Calculation Engine
+// ================================
+  
   function explainETA(
     eta,
     appt,
@@ -730,11 +740,18 @@ if (consAppt && consAppt < tripStart) {
     navigator.serviceWorker.register('sw.js');
   }
 })();
-// HOS clocks logic + 70-Hr weekly logic
+
+// ================================
+// HOS Clock & 70-Hour Weekly Logic
+// ================================
 
 (function () {
   "use strict";
-
+  
+// ================================
+// HOS Clock Storage & State
+// ================================
+  
   const STORAGE_KEY = "hosClocksState_v2";
   const WEEKLY_KEY  = "hos70Weekly_v1";
 
