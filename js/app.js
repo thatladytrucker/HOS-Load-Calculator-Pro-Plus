@@ -315,15 +315,28 @@ function analyzeLatestDispatch({
 const stop2EnabledEl = $('#stop2Enabled');
 const stop2Fields = $('#stop2Fields');
 const stop2Results = $('#stop2Results');
-const stop2Section = $('#stop2Section');
 
-if (!FEATURES.STOP_02 && stop2Section) {
-  stop2Section.style.display = 'none';
+// Feature Gate: STOP 02
+if (!FEATURES.stop02) {
+  if (stop2EnabledEl) {
+    stop2EnabledEl.checked = false;
+    stop2EnabledEl.disabled = true;
+  }
+
+  if (stop2Fields) {
+    stop2Fields.style.display = 'none';
+  }
+
+  if (stop2Results) {
+    stop2Results.style.display = 'none';
+  }
 }
+
 function updateStop2Visibility(){
   if(!stop2Fields || !stop2EnabledEl) return;
   stop2Fields.style.display = stop2EnabledEl.checked ? 'grid' : 'none';
 }
+
 if(stop2EnabledEl){
   stop2EnabledEl.addEventListener('change', updateStop2Visibility);
   updateStop2Visibility();
