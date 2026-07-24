@@ -4,6 +4,9 @@
 
 (function(){
   "use strict";
+
+  // Feature configuration
+const FEATURES = window.APP_FEATURES;
   
 // ================================
 // Utility Functions
