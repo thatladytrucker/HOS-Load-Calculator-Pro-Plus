@@ -315,6 +315,11 @@ function analyzeLatestDispatch({
 const stop2EnabledEl = $('#stop2Enabled');
 const stop2Fields = $('#stop2Fields');
 const stop2Results = $('#stop2Results');
+const stop2Section = $('#stop2Section');
+
+if (!FEATURES.STOP_02 && stop2Section) {
+  stop2Section.style.display = 'none';
+}
 function updateStop2Visibility(){
   if(!stop2Fields || !stop2EnabledEl) return;
   stop2Fields.style.display = stop2EnabledEl.checked ? 'grid' : 'none';
