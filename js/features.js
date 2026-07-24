@@ -2,7 +2,7 @@
 // Feature Tier Control System
 // Master-v7.0.0
 
-const FEATURE_CONFIG = {
+window.APP_FEATURES = {
 
   edition: "PRO_PLUS",
 
