@@ -7,6 +7,8 @@
 
   // Feature configuration
 const FEATURES = window.APP_FEATURES;
+
+console.log(FEATURES);
   
 // ================================
 // Utility Functions
