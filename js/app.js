@@ -318,20 +318,14 @@ const stop2EnabledEl = $('#stop2Enabled');
 const stop2Fields = $('#stop2Fields');
 const stop2Results = $('#stop2Results');
 
-// Feature Gate: STOP 02
-if (!FEATURES.stop02) {
-  if (stop2EnabledEl) {
-    stop2EnabledEl.checked = false;
-    stop2EnabledEl.disabled = true;
-  }
+function updateStop2Visibility(){
+  if(!stop2Fields || !stop2EnabledEl) return;
+  stop2Fields.style.display = stop2EnabledEl.checked ? 'grid' : 'none';
+}
 
-  if (stop2Fields) {
-    stop2Fields.style.display = 'none';
-  }
-
-  if (stop2Results) {
-    stop2Results.style.display = 'none';
-  }
+if(stop2EnabledEl){
+  stop2EnabledEl.addEventListener('change', updateStop2Visibility);
+  updateStop2Visibility();
 }
 
 function updateStop2Visibility(){
