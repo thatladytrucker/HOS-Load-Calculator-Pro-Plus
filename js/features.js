@@ -36,6 +36,7 @@ window.APP_FEATURES = {
     latestDispatch: true,
     appointmentFeasibility: true,
     loadRunStatus: true
+    decisionCenter: true
 
   }
 
