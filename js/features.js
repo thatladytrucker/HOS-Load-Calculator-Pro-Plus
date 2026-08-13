@@ -111,3 +111,4 @@ window.applyFeatureGate = function(elementId, featureName) {
   element.style.display = allowed ? "" : "none";
 };
 applyFeatureGate("pro-stop02", "stop02");
+applyFeatureGate("pro-fuel-stop", "fuelStop");
