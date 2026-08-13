@@ -82,10 +82,8 @@ Additional Features:
 
 # Development Notes
 
-Master-v7.0.0 currently represents the PRO PLUS development version.
+Master-v7.0.0 is the full-feature PRO PLUS development build. The production app will use feature controls and user entitlements within a single app to provide three access tiers: BASE, PRO, and PRO PLUS. Paid features will be unlocked when the user purchases the applicable upgrade.
 
-Future builds will use feature controls to create:
-
-- Base Edition
-- PRO Edition
-- PRO PLUS Edition
+BASE — Free by default
+PRO — Unlocked through a PRO purchase
+PRO PLUS — Unlocked through a PRO PLUS purchase
