@@ -114,3 +114,4 @@ applyFeatureGate("pro-stop02", "stop02");
 applyFeatureGate("pro-fuel-stop", "fuelStop");
 applyFeatureGate("pro-hos-clocks", "weekly70Clock");
 applyFeatureGate("proplus-recaps", "recaps");
+applyFeatureGate("proplus-recap-results", "recaps");
