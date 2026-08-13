@@ -35,7 +35,7 @@ window.APP_FEATURES = {
     recaps: true,
     latestDispatch: true,
     appointmentFeasibility: true,
-    loadRunStatus: true
+    loadRunStatus: true,
     decisionCenter: true
 
   }
