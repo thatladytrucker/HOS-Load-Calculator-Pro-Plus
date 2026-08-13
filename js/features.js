@@ -118,3 +118,4 @@ applyFeatureGate("proplus-recap-results", "recaps");
 applyFeatureGate("proplus-latest-dispatch", "latestDispatch");
 applyFeatureGate("proplus-appointment-feasibility", "appointmentFeasibility");
 applyFeatureGate("proplus-load-run-status", "loadRunStatus");
+applyFeatureGate("proplus-split-sleeper", "splitSleeper");
