@@ -41,3 +41,55 @@ window.APP_FEATURES = {
   }
 
 };
+// USER TIER ACCESS
+window.USER_TIERS = {
+  BASE: 1,
+  PRO: 2,
+  PRO_PLUS: 3
+};
+
+// CURRENT DEVELOPMENT TIER
+window.CURRENT_USER_TIER = "PRO_PLUS";
+
+// REQUIRED TIER FOR EACH FEATURE
+window.FEATURE_REQUIREMENTS = {
+
+  // BASE
+  tripPlanning: "BASE",
+  tripId: "BASE",
+  mphSelection: "BASE",
+  tripStart: "BASE",
+  deadheadMiles: "BASE",
+  loadedMiles: "BASE",
+  appointments: "BASE",
+  stopTypes: "BASE",
+  etaCalculations: "BASE",
+  ptaCalculations: "BASE",
+  calculateButton: "BASE",
+  resetButton: "BASE",
+
+  // PRO
+  weekly70Clock: "PRO",
+  stop02: "PRO",
+  fuelStop: "PRO",
+
+  // PRO PLUS
+  expandedDutyTracking: "PRO_PLUS",
+  splitSleeper: "PRO_PLUS",
+  recaps: "PRO_PLUS",
+  latestDispatch: "PRO_PLUS",
+  appointmentFeasibility: "PRO_PLUS",
+  loadRunStatus: "PRO_PLUS",
+  decisionCenter: "PRO_PLUS"
+};
+// CHECK IF USER HAS ACCESS TO A FEATURE
+window.hasFeatureAccess = function(featureName, userTier) {
+
+  const requiredTier = window.FEATURE_REQUIREMENTS[featureName];
+
+  if (!requiredTier) {
+    return false;
+  }
+
+  return window.USER_TIERS[userTier] >= window.USER_TIERS[requiredTier];
+};
