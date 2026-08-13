@@ -16,3 +16,70 @@ Task 5.2 — Feature Architecture Review
 ✔ Calculator tested successfully
 ✔ PRO feature tested
 ✔ PRO PLUS feature tested
+The intended structure
+
+ONE Google Play app
+
+HOS Load Calculator
+
+→ BASE — Free
+
+Free features
+No payment required
+
+→ PRO — Paid upgrade
+
+Base features
+Pro features
+
+→ PRO PLUS — Paid upgrade
+
+Base features
+Pro features
+Pro Plus features
+
+So the user downloads one app from Google Play.
+
+Then the app determines what feature level that user has purchased.
+
+And your testing strategy makes sense
+
+You're using the Pro Plus build during development/testing because it contains everything.
+
+That lets your testers exercise:
+
+Base functionality
+Pro functionality
+Pro Plus functionality
+
+without us having to maintain three completely separate apps.
+
+The important part is that Google Play should ultimately see one application, while the paid levels are handled as in-app purchases/entitlements, rather than separate apps.
+
+And this connects directly to the problem you had before
+
+You previously had testers being charged because the app itself was being treated as a paid application.
+
+That's exactly what we're trying to avoid.
+
+The desired model is:
+
+Google Play download → FREE
+
+Then:
+
+User chooses PRO → purchases PRO entitlement
+
+or
+
+User chooses PRO PLUS → purchases PRO PLUS entitlement
+
+And your testers can test the base application without paying for the app itself.
+
+So let's correct our task
+
+We should not start by creating another package or separating the apps.
+
+Instead, Task 6.1 should be: Verify the current feature-gating architecture.
+
+Before we touch Google Play packaging, I want to make sure your current code already has the three levels separated correctly.
