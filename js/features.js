@@ -93,3 +93,20 @@ window.hasFeatureAccess = function(featureName, userTier) {
 
   return window.USER_TIERS[userTier] >= window.USER_TIERS[requiredTier];
 };
+
+// APPLY FEATURE ACCESS TO A PAGE SECTION
+window.applyFeatureGate = function(elementId, featureName) {
+
+  const element = document.getElementById(elementId);
+
+  if (!element) {
+    return;
+  }
+
+  const allowed = window.hasFeatureAccess(
+    featureName,
+    window.CURRENT_USER_TIER
+  );
+
+  element.style.display = allowed ? "" : "none";
+};
