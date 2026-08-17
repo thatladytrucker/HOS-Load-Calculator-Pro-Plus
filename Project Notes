@@ -83,3 +83,27 @@ We should not start by creating another package or separating the apps.
 Instead, Task 6.1 should be: Verify the current feature-gating architecture.
 
 Before we touch Google Play packaging, I want to make sure your current code already has the three levels separated correctly.
+08/17/2026
+I suggest we do this in this order
+
+Step 1 — Verify the current HOS app works on two phones.
+
+Not Google Play yet. Just make sure the actual application works.
+
+Step 2 — Finish the Base/PRO/PRO PLUS entitlement system.
+
+Step 3 — Rebuild the Android app with the correct billing configuration.
+
+Step 4 — Put that new AAB into Google Play Console's testing track.
+
+Step 5 — Install it on your two phones and test it through Google Play.
+
+Step 6 — Fix anything we discover.
+
+Step 7 — Production release.
+
+Step 8 — Build document verification.
+
+So your instinct was right: we don't want to put a half-working app into Google Play and hope it becomes functional there.
+
+The good news is that your core HOS app is already working. We're finishing the Android/Google Play layer around it.
