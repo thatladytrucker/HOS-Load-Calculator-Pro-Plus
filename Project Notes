@@ -312,3 +312,15 @@ The test exercised:
 **No code changes were made as a result of this test.**
 
 **Release Test Status: PASS**
+8/18/2026
+Our order is now clear
+
+1. ✅ Current app tested on 2 phones
+2. ✅ Entitlement logic tested
+3. 🔴 Add Google Play Billing permission to the Android package
+4. Create PRO and PRO PLUS products
+5. Build new AAB with PWABuilder
+6. Upload to Google Play closed testing
+7. Test purchases → verify BASE/PRO/PRO PLUS entitlement
+8. Fix anything discovered
+9. Production
