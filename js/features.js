@@ -48,8 +48,9 @@ window.USER_TIERS = {
   PRO_PLUS: 3
 };
 
-// CURRENT DEVELOPMENT TIER
-window.CURRENT_USER_TIER = "PRO_PLUS";
+// CURRENT USER TIER
+// BASE is the default until Google Play entitlement is confirmed.
+window.CURRENT_USER_TIER = "BASE";
 
 // REQUIRED TIER FOR EACH FEATURE
 window.FEATURE_REQUIREMENTS = {
