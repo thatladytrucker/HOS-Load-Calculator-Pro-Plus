@@ -111,12 +111,29 @@ window.applyFeatureGate = function(elementId, featureName) {
 
   element.style.display = allowed ? "" : "none";
 };
-applyFeatureGate("pro-stop02", "stop02");
-applyFeatureGate("pro-fuel-stop", "fuelStop");
-applyFeatureGate("pro-hos-clocks", "weekly70Clock");
-applyFeatureGate("proplus-recaps", "recaps");
-applyFeatureGate("proplus-recap-results", "recaps");
-applyFeatureGate("proplus-latest-dispatch", "latestDispatch");
-applyFeatureGate("proplus-appointment-feasibility", "appointmentFeasibility");
-applyFeatureGate("proplus-load-run-status", "loadRunStatus");
-applyFeatureGate("proplus-split-sleeper", "splitSleeper");
+// APPLY ALL FEATURE GATES
+window.applyAllFeatureGates = function() {
+
+  applyFeatureGate("pro-stop02", "stop02");
+  applyFeatureGate("pro-fuel-stop", "fuelStop");
+  applyFeatureGate("pro-hos-clocks", "weekly70Clock");
+
+  applyFeatureGate("proplus-recaps", "recaps");
+  applyFeatureGate("proplus-recap-results", "recaps");
+  applyFeatureGate("proplus-latest-dispatch", "latestDispatch");
+  applyFeatureGate(
+    "proplus-appointment-feasibility",
+    "appointmentFeasibility"
+  );
+  applyFeatureGate(
+    "proplus-load-run-status",
+    "loadRunStatus"
+  );
+  applyFeatureGate(
+    "proplus-split-sleeper",
+    "splitSleeper"
+  );
+};
+
+// APPLY INITIAL FEATURE ACCESS
+window.applyAllFeatureGates();
