@@ -535,6 +535,11 @@
     <button id="upgrade-pro-plus" class="btn">
       Unlock PRO PLUS
     </button>
+    <script>
+  document.getElementById("upgrade-pro-plus").addEventListener("click", function () {
+    window.HOS_PLAY_BILLING.purchaseProPlus();
+  });
+</script>
   </div>
 </section>      
       
