@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.artsncrabs.hosproplus",
+      "sha256_cert_fingerprints": [
+        "9E:72:EF:C7:46:A4:D3:DE:B5:94:25:90:9D:19:ED:CF:E2:86:08:A3:64:79:F9:10:E5:1C:C5:78:34:0B:A8:C0"
+      ]
+    }
+  }
+]
