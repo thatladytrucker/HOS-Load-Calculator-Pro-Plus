@@ -116,6 +116,7 @@ window.applyFeatureGate = function(elementId, featureName) {
 // APPLY ALL FEATURE GATES
 window.applyAllFeatureGates = function() {
 
+  applyFeatureGate("proplus-cargo-weight", "cargoWeight");
   applyFeatureGate("pro-stop02", "stop02");
   applyFeatureGate("pro-fuel-stop", "fuelStop");
   applyFeatureGate("pro-hos-clocks", "weekly70Clock");
