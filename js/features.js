@@ -76,6 +76,7 @@ window.FEATURE_REQUIREMENTS = {
   fuelStop: "PRO",
 
   // PRO PLUS
+  cargoWeight: "PRO_PLUS",
   expandedDutyTracking: "PRO_PLUS",
   splitSleeper: "PRO_PLUS",
   recaps: "PRO_PLUS",
