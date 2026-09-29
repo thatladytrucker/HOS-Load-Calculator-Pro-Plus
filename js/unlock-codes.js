@@ -120,7 +120,14 @@
   ];
 
   // Google Play app (Digital Goods API present) keeps using Play Billing.
-  var IS_PLAY_APP = "getDigitalGoodsService" in window;
+    var IS_PLAY_APP = (function () {
+     try {
+       if ((document.referrer || "").indexOf("android-app://") === 0) {
+         sessionStorage.setItem("hos_play_app", "1");
+       }
+       return sessionStorage.getItem("hos_play_app") === "1";
+     } catch (e) { return false; }
+   })(); 
   var RANK = { BASE: 1, PRO: 2, PRO_PLUS: 3 };
 
   function readStored() {
