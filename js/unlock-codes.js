@@ -6,8 +6,8 @@
   "use strict";
 
   // ---- EDIT THESE TWO LINES: your Payhip product links ----
-  var PAYHIP_PRO_URL = "";       // e.g. "https://payhip.com/b/XXXXX"
-  var PAYHIP_PRO_PLUS_URL = "";  // e.g. "https://payhip.com/b/YYYYY"
+  var PAYHIP_PRO_URL = "https://payhip.com/b/Tt7Al";
+  var PAYHIP_PRO_PLUS_URL = "https://payhip.com/b/5xJeF";
   // ---------------------------------------------------------
 
   var SALT = "hos-unlock-v1|";
